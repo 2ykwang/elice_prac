@@ -9,7 +9,7 @@ def factorial(num):
 # 재귀호출 풀이
 def factorial_recu(num):
     if num < 2:
-        return num
+        return 1
     return num*factorial_recu(num-1)
 
 def main():

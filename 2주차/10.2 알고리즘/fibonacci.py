@@ -8,7 +8,7 @@ class Fib():
 # 메모이제이션
 class FibMemoization():
     def fibonacci(self, num): 
-        cache = [0,1]`
+        cache = [0,1]
         if num<2:
             return cache[num] 
         for i in range(2,num+1): 

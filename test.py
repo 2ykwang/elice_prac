@@ -1,30 +1,18 @@
-def isParenthesisValid(s):
-    if len(s)%2 !=0:
-        return False
-        
-    st = []
-    dict = {')': '(', 
-            ']': '[', 
-            '}': '{', 
-            '>': '<'
-    } 
-    for bracket in s:
-        if bracket not in dict:
-            st.append(bracket)
-        elif len(st)>0 and dict[bracket] == st[-1]:
-            st.pop(-1)
-        else:
-            return False 
-    return len(st)<1
+def isPrime(n){
+    divisor = 2;
+    
+    if (n == 1) {
+        return false;
+    }
+    while (n > divisor) {
+        if (n % divisor == 0) {
+            return false;
+        } else {
+            divisor++;
+        }
+    }
+    return true;
+}
 
-
-def main():
-    examples = ["({()})",
-                "[]<>{}",
-                ")(" "<]", "<(>)"]
-    for example in examples:
-        print(example, isParenthesisValid(example))
-
-
-if __name__ == "__main__":
-    main()
+print(is_prime(3))
+print(is_prime(3))
