@@ -48,43 +48,71 @@ function Header(props) {
     </header>
   );
 }
+function Create(props) {
+  function submitHandler(ev) {
+    ev.preventDefault();
+    var title = ev.target.title.value;
+    var body = ev.target.body.value;
+    props.onCreate(title, body);
+  }
+  return (
+    <article>
+      <h1>Create</h1>
+      <form onSubmit={submitHandler}>
+        <p>
+          <input type="text" name="title" />
+        </p>
+        <p>
+          <textarea name="body"></textarea>
+        </p>
+        <p>
+          <input type="submit" />
+        </p>
+      </form>
+    </article>
+  );
+}
 
 function App() {
   //var mode = 'READ';
-  let [id, setId] = useState(2)
-  let [mode, setMode] = useState('WELCOME');
+  let [id, setId] = useState(2);
+  var [mode, setMode] = useState('CREATE');
 
-  var topics = [
+  var [topics, setTopics] = useState([
     {id: 1, title: 'html', body: 'html is ..'},
     {id: 2, title: 'css', body: 'css is ..'},
-  ];
+  ]);
 
-  function selectHandler(id) {
-    if (id === undefined) {
+  function selectHandler(_id) {
+    if (_id === undefined) {
       mode = setMode('WELCOME');
-    } else { 
-      id = setId(id);
+    } else {
+      id = setId(_id);
       mode = setMode('READ');
     }
-    alert('select' + id);
   }
-  var articleComp = <Article title="Welcome" body="Welcome is..."></Article>;
 
+  var articleComp = <Article title="Welcome" body="Welcome is ..."></Article>;
   if (mode === 'READ') {
-    let title = '';
-    let body = '';
-
-    for (let i = 0; i < topics.length; i++) {
-      const item = topics[i];
+    var title, body;
+    for (var i = 0; i < topics.length; i++) {
+      var item = topics[i];
       if (item.id === id) {
         title = item.title;
         body = item.body;
-        break;
       }
     }
     articleComp = <Article title={title} body={body}></Article>;
+  } else if (mode === 'CREATE') {
+    function createHandler(_title, _body) {
+      // topics.push({title:_title, body:_body});
+      // setTopics(topics);
+      var newTopics = [...topics];
+      newTopics.push({title: _title, body: _body});
+      setTopics(newTopics);
+    }
+    articleComp = <Create onCreate={createHandler}></Create>;
   }
-
   return (
     <div>
       <Header title="html" onSelect={selectHandler}></Header>
