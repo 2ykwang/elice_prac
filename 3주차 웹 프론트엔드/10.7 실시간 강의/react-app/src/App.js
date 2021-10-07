@@ -11,11 +11,17 @@ function Article(props) {
 
 function Nav(props) {
   var lis = [];
+  function aHandler(ev) {
+    ev.preventDefault();
+    props.onSelect(ev.target.dataset.id);
+  }
   for (var i = 0; i < props.src.length; i++) {
     var item = props.src[i];
     lis.push(
       <li key={item.id}>
-        <a href={item.id + '.html'}>{item.title}</a>
+        <a href={item.id + '.html'} data-id={item.id} onClick={aHandler}>
+          {item.title}
+        </a>
       </li>,
     );
   }
@@ -25,6 +31,7 @@ function Nav(props) {
     </nav>
   );
 }
+
 function Header(props) {
   function aHandler(ev) {
     ev.preventDefault();
@@ -40,18 +47,24 @@ function Header(props) {
     </header>
   );
 }
+
 function App() {
   var topics = [
     {id: 1, title: 'html', body: 'html is ..'},
     {id: 2, title: 'css', body: 'css is ..'},
   ];
-  function selectHandler() {
-    alert('selected!');
+  function selectHandler(id) {
+    if (id === undefined) {
+      // Welcome
+    } else {
+      // 선택한 게시글이 출력
+    }
+    alert('select' + id);
   }
   return (
     <div>
       <Header title="html" onSelect={selectHandler}></Header>
-      <Nav src={topics}></Nav>
+      <Nav src={topics} onSelect={selectHandler}></Nav>
       <Article title="HTML" body="HTML is ..."></Article>
     </div>
   );
