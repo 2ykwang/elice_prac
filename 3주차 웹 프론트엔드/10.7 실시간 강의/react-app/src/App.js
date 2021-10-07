@@ -1,4 +1,5 @@
 import './App.css';
+import {useState} from 'react';
 
 function Article(props) {
   return (
@@ -49,23 +50,32 @@ function Header(props) {
 }
 
 function App() {
+  //var mode = 'READ';
+  var [mode, setMode] = useState('WELCOME');
+  
   var topics = [
     {id: 1, title: 'html', body: 'html is ..'},
     {id: 2, title: 'css', body: 'css is ..'},
   ];
   function selectHandler(id) {
     if (id === undefined) {
-      // Welcome
+      mode = setMode('WELCOME');
     } else {
-      // 선택한 게시글이 출력
+      mode = setMode('READ');
     }
     alert('select' + id);
   }
+  var articleComp = <Article title="Welcome" body="Welcome is..."></Article>;
+
+  if (mode === 'READ') {
+    articleComp = <Article title="READ" body="Hello, READ"></Article>;
+  }
+
   return (
     <div>
       <Header title="html" onSelect={selectHandler}></Header>
-      <Nav src={topics} onSelect={selectHandler}></Nav>
-      <Article title="HTML" body="HTML is ..."></Article>
+      <Nav src={topics} onSelect={selectHandler}></Nav> 
+      {articleComp}
     </div>
   );
 }
