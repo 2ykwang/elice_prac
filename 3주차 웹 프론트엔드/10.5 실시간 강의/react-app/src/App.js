@@ -9,7 +9,12 @@ function Nav(props) {
 
   let lis = [];
   for (let i = 0; i < props.src.length; i++) {
-    lis.push(<li key={props.src[i].id}>{props.src[i].title}</li>);
+    let item = props.src[i];
+    lis.push(
+      <li key={item.id}> 
+        <a href={item.src}>{item.title}</a>
+      </li>
+    );
   }
 
   return (
@@ -31,10 +36,15 @@ function Article(props) {
 }
 
 function Header(props) {
+  function aHandler(){
+    alert('hi');
+  }
   return (
     <header>
       <h1>
-        <a href="index.html">{props.title}</a>
+        <a href="index.html" onClick={aHandler}>
+          {props.title}
+        </a>
       </h1>
     </header>
   );
@@ -42,10 +52,9 @@ function Header(props) {
 
 function App() {
   var topics = [
-    {id: 1, title: 'html', body: 'html is ...'},
-    {id: 2, title: 'css', body: 'css is ...'},
-  ];
-
+    {id: 1, title: 'html', body: 'html is ...', src: '1.html'},
+    {id: 2, title: 'css', body: 'css is ...', src: '2.html'},
+  ]; 
   return (
     <React.Fragment>
       <Header title="title"></Header>
