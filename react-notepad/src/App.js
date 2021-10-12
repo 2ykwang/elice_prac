@@ -1,11 +1,24 @@
+import React, {useState} from "react";
 import './App.css';
+import Sidebar from "./components/Sidebar";
+import NoteForm from "./components/NoteForm";
 
-function App() {
+/*
+  컴포넌트 분리
+  - App
+    - Sidebar
+      - NoteList
+        - Note
+    - NoteForm
+      - NoteFormHeader
+      - NoteFormContent
+ */
+
+export default function App() {
   return (
       <>
-        <h1>Note Pad</h1>
+          <Sidebar/>
+          <NoteForm/>
       </>
   );
 }
-
-export default App;
