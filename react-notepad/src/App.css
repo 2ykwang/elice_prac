@@ -8,20 +8,17 @@
     font 서브 컬러 - > #7D7E7E
 
  */
-body {
+.App {
     background-color: #1E1E1E;
     color: #DDDDDD;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
 }
 /* 스크롤바 제거 */
 ::-webkit-scrollbar {
      width: 0;
      background: transparent;
-}
-.container{
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
 }
 .sidebar {
     position: fixed;
@@ -36,11 +33,11 @@ body {
 }
 
 .note-list {
+    margin: 15px;
 }
 
 .note-list-item {
     display: inline-block;
-
     margin: 20px;
     color: #DDDDDD;
     width: 260px;
@@ -54,12 +51,12 @@ body {
 }
 
 .note-list-item-date {
-    color: #DDDDDD;
+    color: #7D7E7E;
     font-size: 0.9em;
 }
 
 .note-list-item-content {
-    color: #DDDDDD;
+    color: #7D7E7E;
     font-size: 0.9em;
     padding-bottom: 5px;
     border-bottom: 1px solid #383939;
@@ -80,17 +77,18 @@ textarea, #notePreview {
     resize: none;
     outline: none;
     display: inline-block;
-    width: 49%;
     vertical-align: top;
     box-sizing: border-box;
     padding: 0 20px;
     color:#DDDDDD;
     font-size: 1.0em;
     background-color: #222;
+    height: 50%;
+    width: 100%;
+    position: relative; /* If you want text inside of it */
 }
 
 #notePreview{
-    height: 100%;
     overflow-y: auto;
     overflow-wrap: break-word;
 }
@@ -98,6 +96,5 @@ textarea, #notePreview {
 #noteEditor {
     padding:20px;
     font-family: '맑은 고딕', courier, monospace;
-    height: 100%;
     background-color: transparent;
 }
