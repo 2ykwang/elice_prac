@@ -1,8 +1,14 @@
 import React from "react";
 
-const NoteFormContent = () =>{
+const NoteFormContent = (props) =>{
+
+    const {onChange} = props;
+
     return (
-        <input />
+        <textarea
+            id="noteEditor"
+            onChange={onChange}
+        />
     )
 }
 

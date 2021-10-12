@@ -1,10 +1,11 @@
 import React from "react";
 import NoteList from "./NoteList";
-const Sidebar = () =>{
+const Sidebar = (props) =>{
+    const {notes} = props;
 
     return (
         <div className="sidebar">
-            <NoteList/>
+            <NoteList notes={notes}/>
         </div>
     )
 }

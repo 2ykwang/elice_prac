@@ -1,13 +1,14 @@
 import React from "react";
 import Note from './Note';
 
-const NoteList = () =>{
+const NoteList = (props) =>{
+    const {notes} = props;
+
     return (
         <>
-            <Note/>
-            <Note/>
-            <Note/>
-            <Note/>
+            {notes.map((x)=>
+                <Note id={x.id} content={x.content} date={x.date}/>
+            )}
         </>
     )
 }

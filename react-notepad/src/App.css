@@ -1,0 +1,103 @@
+/*
+    색상 코드
+    배경           - > #222423
+    헤더 배경       - > #393A39
+    폼 배경        - > #1E1E1E
+
+    font 기본 컬러 - > #DDDDDD
+    font 서브 컬러 - > #7D7E7E
+
+ */
+body {
+    background-color: #1E1E1E;
+    color: #DDDDDD;
+}
+/* 스크롤바 제거 */
+::-webkit-scrollbar {
+     width: 0;
+     background: transparent;
+}
+.container{
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    width: 350px;
+    height: 100%;
+    background-color: #222423;
+}
+
+.note-list {
+}
+
+.note-list-item {
+    display: inline-block;
+
+    margin: 20px;
+    color: #DDDDDD;
+    width: 260px;
+    height: 50px;
+}
+
+.note-list-item-header {
+    color: #DDDDDD;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.note-list-item-date {
+    color: #DDDDDD;
+    font-size: 0.9em;
+}
+
+.note-list-item-content {
+    color: #DDDDDD;
+    font-size: 0.9em;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #383939;
+}
+
+.note-list-item a, a:hover, a:link, a:visited {
+    text-decoration: none;
+}
+
+.note-form {
+    margin-left: 350px;
+    background-color: #1E1E1E;
+    height: 100%;
+}
+
+textarea, #notePreview {
+    border: none;
+    resize: none;
+    outline: none;
+    display: inline-block;
+    width: 49%;
+    vertical-align: top;
+    box-sizing: border-box;
+    padding: 0 20px;
+    color:#DDDDDD;
+    font-size: 1.0em;
+    background-color: #222;
+}
+
+#notePreview{
+    height: 100%;
+    overflow-y: auto;
+    overflow-wrap: break-word;
+}
+
+#noteEditor {
+    padding:20px;
+    font-family: '맑은 고딕', courier, monospace;
+    height: 100%;
+    background-color: transparent;
+}
