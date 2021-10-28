@@ -1,4 +1,10 @@
 import React, {useState} from "react";
+import {
+    BrowserRouter,
+    Route,
+    Switch,
+} from 'react-router-dom';
+
 import './App.css';
 import Sidebar from "./components/Sidebar";
 import NoteForm from "./components/NoteForm";
@@ -21,6 +27,36 @@ const makeTestData = () => {
     }
     return notes;
 }
+
+const DefaultLayout = (props) =>{
+    const {selectNote, notes, onSelectNote, onContentChange} = props;
+    // className 전달 받음
+    const {className} = props;
+
+    return (
+    <div className={className}>
+        <Sidebar
+            onSelectNote={onSelectNote}
+            notes={notes}
+        />
+        {selectNote && <NoteForm note={selectNote} onContentChange={onContentChange}/>}
+    </div>
+)};
+const MainPage = (props) =>{
+
+    return (
+        <> </>
+    )
+};
+
+const ViewNotePage = (props) =>{
+    return (
+        <>
+
+        </>
+    )
+};
+
 export default function App() {
     const [notes, setNotes] = useState(makeTestData());
     const [note, setNote] = useState(null);
@@ -35,6 +71,7 @@ export default function App() {
             setNote(null);
         }
     }
+
     const handleNoteFormTextChanged = (text) => {
         if (note) {
             const copyArr = [...notes];
@@ -47,11 +84,10 @@ export default function App() {
     }
     return (
         <div className="App">
-            <Sidebar
-                onSelectNote={handleSelectNote}
-                notes={notes}
-            />
-            {note && <NoteForm note={note} onContentChange={handleNoteFormTextChanged}/>}
+            <BrowserRouter>
+                <Route exact path="/" component={MainPage}/>
+                <Route exact path="/view/:id" component={ViewNotePage}/>
+            </BrowserRouter>
         </div>
     );
 }
